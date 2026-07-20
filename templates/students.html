@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <title>Student Management System </title>
+    
+</head>
+<body>
+    <hr>
+        <a href="/">Home</a>
+        <a href="/students/add">Add Students</a>
+        <a href="/students">Students Record</a>
+        <a href="/about">About</a>
+    <hr>
+    <h2>Students Record</h2>
+    <form action="/students" method="get">
+        <input type="text" name="search" placeholder="Enter Student Name">
+        <button type="submit">Search</button>
+        
+    </form>
+    <br>
+    <table border="2" cellpadding='8'>
+        <tr>
+            <th>ID</th>
+            <th>Roll No </th>
+            <th>Name </th>
+            <th>Age </th>
+            <th>Course </th>
+            <th>Email </th>
+            <th>Phone </th>
+            <th>Action</th>
+        </tr>
+        
+        {% for student in student_records %}
+        <tr>
+            <td>{{student.id}}</td>
+            <td>{{student.roll_no}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.course}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.phone}}</td>
+            <td>
+                <a href="/students/edit/{{student.id}}">Edit</a>| 
+                <a href="/students/delete/{{student.id}}">Delete</a>
+
+            </td>
+        </tr>
+        {%endfor %}
+        
+        
+    </table>
+    
+</body>
+</html>
